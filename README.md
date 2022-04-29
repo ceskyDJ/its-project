@@ -163,3 +163,15 @@ ValueError: Disallowed subobject type: tool
 - Click on "Save".
 - It closes the dialog windows and immediately sets the Tool as "Published". It should not do that, because
 some date in the future was specified for this event.
+
+### Different behavior for each select input field in Edit Method form's Relations tab
+
+- Log in as user with admin privileges ("itsadmin" for example).
+- Open edit form for some Method
+- Go to Relations tab
+- Try to find something in "Related Methods" input field, it isn't working (at least for me)
+- Try to find something in "Tools" input field, it starts searching after typing the first character
+- Try to find something in "Test Case or Verification and Validation activity", it shows a result without typing
+anything. You just click into the field and Test Case is shown
+
+In Add Tool form's Relations tab is similar situation. Selecting Standards doesn't work at all.
