@@ -8,3 +8,7 @@ screenshots/
 # Generated files
 xsmahe01.zip
 tmp/
+
+# Tmp files
+__pycache__/
+geckodriver.log
