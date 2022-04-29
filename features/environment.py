@@ -37,10 +37,7 @@ def load_main_page(context: runner.Context) -> WebDriver:
     browser: WebDriver = context.selenium
 
     # -- SETUP-FIXTURE PART:
-    if "-w" in sys.argv or "--wip" in sys.argv:
-        browser.get("http://localhost:8080/repo")
-    else:
-        browser.get("http://valu3s:8080/repo")
+    browser.get(context.url)
 
     yield browser
 
@@ -52,6 +49,12 @@ def before_all(context: runner.Context) -> None:
     # Set fix seed random (it will generate always the same values)
     random.seed(1)
 
+    # Add root URL to context
+    if "-w" in sys.argv or "--wip" in sys.argv:
+        context.url = "http://localhost:8080/repo"
+    else:
+        context.url = "http://valu3s:8080/repo"
+
     use_fixture(init_selenium, context)
 
 
@@ -61,4 +64,8 @@ def after_all(_) -> None:
 
 
 def before_scenario(context: runner.Context, _) -> None:
+    # Prepare empty container for mapping names of created items with their URLs (names aren't unique)
+    # It is the URL with view (/view), these pages are displayed after creating new item
+    context.urls = dict()
+
     use_fixture(load_main_page, context)
