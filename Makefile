@@ -6,7 +6,7 @@ pack:
 	zip -j xsmahe01.zip features/*.feature README.md
 
 pack2:
-	zip -j xsmahe01.zip feafures/*.feature feafures/environment.py features/steps/*.py requirements.txt
+	zip -j xsmahe01.zip feafures/*.feature feafures/environment.py features/steps/*.py requirements.txt report.pdf
 
 clean:
 	rm xsmahe01.zip
