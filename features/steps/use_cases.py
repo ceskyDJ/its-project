@@ -1,3 +1,5 @@
+import sys
+
 import behave.runner
 from behave import *
 from selenium.webdriver.common.by import By
@@ -78,13 +80,17 @@ def step_impl(context: behave.runner.Context, use_case_name: str) -> None:
     if use_case_name not in context.urls:
         raise ValueError(f"Use Case {use_case_name} isn't known in current scenario")
 
+    context.execute_steps(f'Given I went to page "Use Cases"')
+
     displayed_use_cases = browser.find_elements(
         By.XPATH,
         "//div[@id='faceted-results']//tr//a[contains(@class, 'contenttype-use_case')]"
     )
 
     for use_case in displayed_use_cases:
-        if use_case.get_attribute("href") == f"{context.url}/{context.urls[use_case_name]}":
+        use_case_detail_url = context.urls[use_case_name]
+
+        if use_case.get_attribute("href") == use_case_detail_url.replace("/view", ""):
             assert True
             return
 

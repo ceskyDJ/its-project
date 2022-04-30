@@ -66,6 +66,11 @@ def step_impl(context: behave.runner.Context, item_type: str, item_name: str) ->
     context.execute_steps(f'Given State of {item_type} "{item_name}" is "Published"')
 
 
+@when('I publish {item_type} "{item_name}"')
+def step_impl(context: behave.runner.Context, item_type: str, item_name: str) -> None:
+    context.execute_steps(f'Given State of {item_type} "{item_name}" is "Published"')
+
+
 @then('State of {item_type} "{item_name}" should be "{state}"')
 def step_impl(context: behave.runner.Context, item_type: str, item_name: str, state: str) -> None:
     browser: WebDriver = context.selenium

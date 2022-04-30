@@ -34,7 +34,7 @@ Feature: Manipulation with Use Cases
 
   Scenario: [4] Publishing Use Case for consumers
     Given I have Use Case "Testing UC"
-    When I submit for publication Use Case "Testing UC"
+    When I publish Use Case "Testing UC"
     And I log out
     Then I should find Use Case "Testing UC" on "Use Cases" page
 
